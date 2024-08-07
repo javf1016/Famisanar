@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Consulta de Afiliados</title>
+</h:head>
+<h:body>
+    <h:form id="consultaForm">
+        <h:selectOneRadio id="consultaPorRadio" value="#{consultaBean.consultaPor}">
+            <f:selectItem itemValue="identificacion" itemLabel="Identificación" />
+            <f:selectItem itemValue="apellidos" itemLabel="Apellidos" />
+            <f:ajax render="@form" execute="@this" />
+        </h:selectOneRadio>
+
+        <h:panelGrid id="panelGrid" columns="2">
+            <h:outputLabel for="tid" value="TID" />
+            <h:inputText id="tid" value="#{consultaBean.tid}" />
+
+            <h:outputLabel for="numero" value="Número"  />
+            <h:inputText id="numero" value="#{consultaBean.numero}" />
+
+            <h:outputLabel for="apellidos" value="Apellidos:" rendered="#{consultaBean.consultaPor == 'apellidos'}" />
+            <h:inputText id="apellidos" value="#{consultaBean.apellidos}" rendered="#{consultaBean.consultaPor == 'apellidos'}" />
+        </h:panelGrid>
+
+        <h:commandButton id="consultarBtn" value="Consultar" action="#{consultaBean.consultar}" />
+    </h:form>
+
+    <h:dataTable id="afiliadosTable" value="#{consultaBean.afiliados}" var="afiliado">
+        <h:column>
+            <f:facet name="header">ID</f:facet>
+            #{afiliado.id}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Nombres</f:facet>
+            #{afiliado.nombres}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Apellidos</f:facet>
+            #{afiliado.apellidos}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Email</f:facet>
+            #{afiliado.email}
+        </h:column>
+    </h:dataTable>
+</h:body>
+</html>
