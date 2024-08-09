@@ -15,14 +15,16 @@
         </h:selectOneRadio>
 
         <h:panelGrid id="panelGrid" columns="2">
-            <h:outputLabel for="tid" value="TID" />
-            <h:inputText id="tid" value="#{consultaBean.tid}" />
+            <h:outputLabel for="tid" value="Tipo ID" />
+            <h:selectOneMenu id="tid" value="#{consultaBean.tid}">
+                <f:selectItems value="#{consultaBean.tipoIdentificList}" var="tipo" itemValue="#{tipo.id}" itemLabel="#{tipo.descripcion}" />
+            </h:selectOneMenu>
 
             <h:outputLabel for="numero" value="Número"  />
             <h:inputText id="numero" value="#{consultaBean.numero}" />
 
-            <h:outputLabel for="apellidos" value="Apellidos:" rendered="#{consultaBean.consultaPor == 'apellidos'}" />
-            <h:inputText id="apellidos" value="#{consultaBean.apellidos}" rendered="#{consultaBean.consultaPor == 'apellidos'}" />
+            <h:outputLabel for="apellidos" value="Apellidos:" />
+            <h:inputText id="apellidos" value="#{consultaBean.apellidos}" />
         </h:panelGrid>
 
         <h:commandButton id="consultarBtn" value="Consultar" action="#{consultaBean.consultar}" />

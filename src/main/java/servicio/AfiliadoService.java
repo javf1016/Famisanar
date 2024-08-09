@@ -14,12 +14,13 @@ public class AfiliadoService {
     @Inject
     private AfiliadoDAO afiliadoDAO;
 
-    public List<Afiliado> consultarPorIdentificacion(String tid, String numero) {
+    public List<Afiliado> consultarPorIdentificacion(Long tid, Long numero) {
         this.afiliadoDAO = new AfiliadoDAO();
         return afiliadoDAO.findByIdentificacion(tid, numero);
     }
 
     public List<Afiliado> consultarPorApellidos(String apellidos) {
+        this.afiliadoDAO = new AfiliadoDAO();
         return afiliadoDAO.findByApellidos(apellidos);
     }
 }

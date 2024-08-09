@@ -8,7 +8,7 @@ public class Afiliado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String numero;
+    private Long numero;
     private String nombres;
     private String apellidos;
     private String email;
@@ -18,7 +18,7 @@ public class Afiliado {
 
     @ManyToOne
     @JoinColumn(name = "idtipoiden", nullable = false)
-    private TipoIdentific tipoIdentific;
+    private TipoIdentific idtipoiden;
 
     public Long getId() {
         return id;
@@ -28,11 +28,11 @@ public class Afiliado {
         this.id = id;
     }
 
-    public String getNumero() {
+    public Long getNumero() {
         return numero;
     }
 
-    public void setNumero(String numero) {
+    public void setNumero(Long numero) {
         this.numero = numero;
     }
 
@@ -84,15 +84,15 @@ public class Afiliado {
         this.genero = genero;
     }
 
-    public TipoIdentific getTipoIdentific() {
-        return tipoIdentific;
+    public TipoIdentific getIdtipoiden() {
+        return idtipoiden;
     }
 
-    public void setTipoIdentific(TipoIdentific tipoIdentific) {
-        this.tipoIdentific = tipoIdentific;
+    public void setIdtipoiden(TipoIdentific idtipoiden) {
+        this.idtipoiden = idtipoiden;
     }
 
-    public Afiliado(String numero, String nombres, String apellidos, String email, String direccion, String telefono, char genero, TipoIdentific tipoIdentific) {
+    public Afiliado(Long numero, String nombres, String apellidos, String email, String direccion, String telefono, char genero, TipoIdentific idtipoiden) {
         this.numero = numero;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -100,7 +100,7 @@ public class Afiliado {
         this.direccion = direccion;
         this.telefono = telefono;
         this.genero = genero;
-        this.tipoIdentific = tipoIdentific;
+        this.idtipoiden = idtipoiden;
     }
 
     public Afiliado() {
